@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="todolist">
   <head>
     <meta charset="utf-8">
     <title>To Do list</title>
 
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body ng-controller="TodoController as todoCtrl">
 
+    <!-- input field to take input and then ng-click on add input field will call
+    addtask function -->
+    <div class="row">
+      <input type="text" name="" value="" ng-model="todoinput1">
+      <!-- <button ng-click="addTask(todoinput1)" ng-disabled="!todoinput1">ADD FIRST</button> -->
+      <button ng-click="addTask(todoinput1)" ng-disabled="!todoinput1">Add</button>
+    </div>
+
+    <!-- to display the task that are already pushed using above field -->
+    <div class="row" ng-repeat="task in tasks">
+      <input type="checkbox" name="" ng-model="task.done"><span ng-class="{done: task.done}">{{task.data}}</span>
+        <!-- remove a task -->
+      <input type="submit" name="" value="Del" ng-click="remove(task)">
+    </div>
 
     <script type="text/javascript" src="angular.min.js"></script>
-    <script type="text/javascript" src="app.js">
-
-    </script>
+    <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
